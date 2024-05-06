@@ -31,5 +31,5 @@ pkg/
 DS_Store
 
 # Go module
-#go.mod
-#go.sum
+go.mod
+go.sum
