@@ -16,13 +16,13 @@
 vendor/
 bin/
 pkg/
-.cache
-.a
-.o
-.elf
-.exe
-.dylib
-.so
+*.cache
+*.a
+*.o
+*.elf
+*.exe
+*.dylib
+*.so
 
 # other
 *.log
