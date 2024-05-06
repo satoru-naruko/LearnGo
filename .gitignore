@@ -1,0 +1,35 @@
+# IDE editor
+.editorconfig
+.vscode/*
+*.sublime*
+*.idea/*
+*.pycharm/*
+
+# test
+*.out
+*.test
+*_test.go
+*.bench
+*.profile
+
+# build
+vendor/
+bin/
+pkg/
+.cache
+.a
+.o
+.elf
+.exe
+.dylib
+.so
+
+# other
+*.log
+*.tmp
+*.swp
+DS_Store
+
+# Go module
+#go.mod
+#go.sum
