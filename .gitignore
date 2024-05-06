@@ -23,6 +23,7 @@ pkg/
 *.exe
 *.dylib
 *.so
+*.go
 
 # other
 *.log
