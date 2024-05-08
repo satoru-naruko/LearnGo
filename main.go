@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"HelloWorld/src/say_hello"
+	"fmt"
+)
 
 func main() {
 	fmt.Println("Hello, World!")
@@ -37,4 +40,7 @@ func main() {
 	} else {
 		fmt.Println("Invalid day") // 不正な曜日
 	}
+
+	fmt.Println("** using package api **")
+	say_hello.SayHello("taro")
 }
