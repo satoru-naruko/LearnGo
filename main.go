@@ -1,8 +1,10 @@
 package main
 
 import (
-	"HelloWorld/src/say_hello"
+	"HelloWorld/mylib/my_database"
+	"HelloWorld/mylib/say_hello"
 	"fmt"
+	"log"
 )
 
 func main() {
@@ -43,4 +45,41 @@ func main() {
 
 	fmt.Println("** using package api **")
 	say_hello.SayHello("taro")
+
+	db, err := my_database.New("./mydatabase.db")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	res, err := db.Exec("INSERT INTO users (name) VALUES (?)", "Alice")
+	if err != nil {
+		log.Fatal(err)
+	}
+	id, err := res.LastInsertId()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Inserted ID:", id)
+
+	rows, err := db.Query("SELECT * FROM users")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var id int64
+		var name string
+		err := rows.Scan(&id, &name) // カラムの数と型に合わせて変数を用意
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("ID:", id, "Name:", name)
+	}
 }
