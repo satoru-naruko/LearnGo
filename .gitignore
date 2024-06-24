@@ -33,3 +33,9 @@ DS_Store
 # Go module
 go.mod
 go.sum
+
+#code runner
+tempCodeRunnerFile.go
+
+# db
+*.db
